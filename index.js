@@ -11,16 +11,19 @@ class Deck {
         this.cardDeck();
         this.shuffle();
     }
+
+
 // Cards in standard 52 card deck
     cardDeck() {
-        const ranks = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"];
-        const suits = ["Hearts", "Diamonds", "Clubs", "Spades"];
+        let ranks = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"];
+        let suits = ["Hearts", "Diamonds", "Clubs", "Spades"];
         for (let suit of suits) {
             for (let rank of ranks) {
                 this.cards.push(new Card(rank, suit));
             }
         }
     }
+
 // Shuffle cards
     shuffle() {
     
@@ -66,7 +69,7 @@ class Game {
 
     playRounds() {
         for (let i = 0; i < 26; i++) {
-            const [card1, card2] = this.players.map(player => player.playCard());
+            let [card1, card2] = this.players.map(player => player.playCard());
             if (this.compareCards(card1, card2) > 0) {
                 this.players[0].score++;
             } else if (this.compareCards(card1, card2) < 0) {
@@ -84,16 +87,14 @@ class Game {
 
     // Score & winner
     displayScoreAndWinner() {
-        const [player1, player2] = this.players;
+        let [player1, player2] = this.players;
         console.log(`${player1.name} scored ${player1.score} points.`);
         console.log(`${player2.name} scored ${player2.score} points.`);
         if (player1.score > player2.score) {
             console.log(`${player1.name} wins!`);
         } else if (player1.score < player2.score) {
             console.log(`${player2.name} wins!`);
-        } else {
-            console.log("It's a tie!");
-        }
+        } 
     }
 }
 
